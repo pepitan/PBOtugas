@@ -9,11 +9,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ASUS
+ * @author Wahyu Priyo
  */
 public class GUI extends javax.swing.JFrame {
     String alamatStok;
@@ -35,6 +36,10 @@ public class GUI extends javax.swing.JFrame {
         jml = jumlahText.getText();
 //        jml=jumlah.getText();
         loadData();
+    }
+    
+    public void Update(){
+        
     }
     
     public void loadData(){
