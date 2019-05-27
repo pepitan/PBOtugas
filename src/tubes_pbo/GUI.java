@@ -10,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import javafx.fxml.LoadException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,7 +39,9 @@ public class GUI extends javax.swing.JFrame {
         makanan = hargaText.getText();
         jml = jumlahText.getText();
 //        jml=jumlah.getText();
-        loadData();
+        loadData load = new loadData();
+        load.mknloadData(tabelMakanan);
+        load.mnmloadData(tabelMinuman);
     }
 
     public void Update() {
@@ -121,7 +124,7 @@ public class GUI extends javax.swing.JFrame {
             mknTabel.setValueAt(stok, baris, 3);//nilai stok berubah pada jtable1
             mnmTabel.setValueAt(stok, baris, 3);
             Update();//update notepad
-            loadData();//refresh jtable1
+//            loadData();//refresh jtable1
 
             data[0] = namaProduk;
             data[1] = "" + harga;
@@ -139,34 +142,6 @@ public class GUI extends javax.swing.JFrame {
         jumlahText.setText("");
     }
 
-    public void loadData() {
-        mknTabel.getDataVector().removeAllElements();
-        String path = "src/data/makanan.txt";
-        File file = new File(path);
-        try {
-            baca = new BufferedReader(new FileReader(file));
-            Object[] dataBaris = baca.lines().toArray();
-            for (int i = 0; 1 < dataBaris.length; i++) {
-                String baris = dataBaris[i].toString();
-                String[] data = baris.split("/");
-                mknTabel.addRow(data);
-            }
-        } catch (Exception e) {
-        }
-        mnmTabel.getDataVector().removeAllElements();
-        String path1 = "src/data/minuman.txt";
-        File file1 = new File(path1);
-        try {
-            bacamnm = new BufferedReader(new FileReader(file1));
-            Object[] dataBarismnm = bacamnm.lines().toArray();
-            for (int i = 0; 1 < dataBarismnm.length; i++) {
-                String barismnm = dataBarismnm[i].toString();
-                String[] datamnm = barismnm.split("/");
-                mnmTabel.addRow(datamnm);
-            }
-        } catch (Exception e) {
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
