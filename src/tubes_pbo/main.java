@@ -9,7 +9,7 @@ package tubes_pbo;
  *
  * @author Wahyu Priyo W
  */
-public class coba {
+public class main {
     
     public void ut(){
         

@@ -77,18 +77,6 @@ public class GUI extends javax.swing.JFrame {
         }
     }
 
-    public void tableMknClick() {
-        int larikmkn = tabelMakanan.getSelectedRow();
-        makananText1.setText("" + mknTabel.getValueAt(larikmkn, 0).toString());
-        hargaText.setText("" + mknTabel.getValueAt(larikmkn, 1).toString());
-    }
-
-    public void tableMnmClick() {
-        int larikmnm = tabelMinuman.getSelectedRow();
-        minumanText1.setText("" + mnmTabel.getValueAt(larikmnm, 0).toString());
-        hargaText.setText("" + mnmTabel.getValueAt(larikmnm, 1).toString());
-    }
-
     public void buttonClick() {
         int jml = Integer.parseInt(jumlahText.getText());
         String namaProduk = "";
@@ -362,11 +350,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_hargaTextActionPerformed
 
     private void tabelMinumanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMinumanMouseReleased
-        tableMnmClick();
+        clickTabel click = new clickTabel();
+        click.clicktbMnm();
     }//GEN-LAST:event_tabelMinumanMouseReleased
 
     private void tabelMakananMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMakananMouseReleased
-        tableMknClick();
+        clickTabel click = new clickTabel();
+        click.clicktbMkn();
     }//GEN-LAST:event_tabelMakananMouseReleased
 
     private void tabMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMenuMouseClicked
