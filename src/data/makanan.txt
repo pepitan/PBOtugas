@@ -1,2 +1,2 @@
-Mie/80000/Ada/75
-Bakso/6000/Ada/32
+Mie/80000/Ada/46
+Bakso/6000/Ada/28

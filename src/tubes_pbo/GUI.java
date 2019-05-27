@@ -193,7 +193,7 @@ public class GUI extends javax.swing.JFrame {
         minumanText1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        ta1 = new javax.swing.JTextField();
         tabMenu = new javax.swing.JTabbedPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelMakanan = new javax.swing.JTable();
@@ -201,6 +201,7 @@ public class GUI extends javax.swing.JFrame {
         tabelMinuman = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(917, 630));
@@ -230,7 +231,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabelPesan);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(430, 370, 452, 210);
+        jScrollPane2.setBounds(430, 280, 452, 210);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,8 +284,14 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setText("Total yang harus anda bayarkan");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(40, 390, 230, 30);
-        jPanel1.add(jTextField4);
-        jTextField4.setBounds(40, 430, 220, 30);
+
+        ta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ta1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ta1);
+        ta1.setBounds(40, 430, 220, 30);
 
         tabMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -343,7 +350,7 @@ public class GUI extends javax.swing.JFrame {
         tabMenu.addTab("", jScrollPane4);
 
         jPanel1.add(tabMenu);
-        tabMenu.setBounds(430, 120, 450, 230);
+        tabMenu.setBounds(430, 30, 450, 230);
         jPanel1.add(btnDelete);
         btnDelete.setBounds(150, 360, 80, 30);
 
@@ -354,6 +361,16 @@ public class GUI extends javax.swing.JFrame {
         });
         jPanel1.add(btnAdd);
         btnAdd.setBounds(270, 360, 90, 30);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("Total");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(610, 510, 120, 40);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 900, 600);
@@ -382,6 +399,19 @@ public class GUI extends javax.swing.JFrame {
         hargaText.setText("");
         minumanText1.setText("");
     }//GEN-LAST:event_tabMenuMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         // TODO add your handling code here:
+         int x = 0;
+         for (int y = 0; y < tabelPesan.getRowCount(); y++) {
+            x+=Integer.parseInt(tabelPesan.getValueAt(y, 3).toString());
+        }
+         ta1.setText(x+"");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ta1ActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_ta1ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -422,6 +452,7 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JButton btnAdd;
     public static javax.swing.JButton btnDelete;
     public static javax.swing.JTextField hargaText;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel2;
@@ -433,11 +464,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField4;
     public static javax.swing.JTextField jumlahText;
     public static javax.swing.JTextField makananText1;
     public static javax.swing.JTextField minumanText1;
     public static javax.swing.JTextField pemesanText;
+    private javax.swing.JTextField ta1;
     public static javax.swing.JTabbedPane tabMenu;
     public static javax.swing.JTable tabelMakanan;
     public static javax.swing.JTable tabelMinuman;
