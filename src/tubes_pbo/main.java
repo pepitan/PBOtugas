@@ -17,6 +17,7 @@ public class main {
         public static void main(String[] args) throws InterruptedException {
         GUI gui = new GUI();
         gui.setVisible(true);
+        //halo
         
 //        for(int i=0; i<=100; i++){
 //            Thread.sleep(40);
