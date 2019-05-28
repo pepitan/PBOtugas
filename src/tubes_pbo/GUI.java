@@ -29,6 +29,7 @@ public class GUI extends javax.swing.JFrame {
     DefaultTableModel mnmTabel;
     DefaultTableModel troli;
     String[] data, keranjang;
+    int row;
 
     public GUI() {
         initComponents();
@@ -77,62 +78,62 @@ public class GUI extends javax.swing.JFrame {
         }
     }
 
-    public void buttonClick() {
-        int jml = Integer.parseInt(jumlahText.getText());
-        String namaProduk = "";
-        String[] data = new String[4];//array untuk dimasukan ke jTabel2
-        boolean ready = false;//status kode barang tersedia di jtble1
-        int stok = 0;
-        int baris = 0;
-        int harga = 0;
-        try {
-            
-        } catch (Exception e) {
-        }
-        for (int i = 0; i < tabelMakanan.getRowCount(); i++) {
-            if (makananText1.getText().equals(mknTabel.getValueAt(i, 0))) {
-                namaProduk = mknTabel.getValueAt(i, 0).toString();
-                harga = Integer.parseInt(mknTabel.getValueAt(i, 1).toString());
-                stok = Integer.parseInt(mknTabel.getValueAt(i, 3).toString());
-                baris = i;//kode di temukan pada baris ke-i
-                ready = true;//bernilai true karena kode tersedia di jtble1
-                break;
-            }
-        }
-        
-        for (int i = 0; i < tabelMinuman.getRowCount(); i++) {
-            if (minumanText1.getText().equals(mnmTabel.getValueAt(i, 0))) {
-                namaProduk = mnmTabel.getValueAt(i, 0).toString();
-                harga = Integer.parseInt(mnmTabel.getValueAt(i, 1).toString());
-                stok = Integer.parseInt(mnmTabel.getValueAt(i, 3).toString());
-                baris = i;//kode di temukan pada baris ke-i
-                ready = true;//bernilai true karena kode tersedia di jtble1
-                break;
-            }
-        }
-        
-        if (ready && stok >= jml) {
-            stok -= jml;//stok = stok-jumlah
-            mknTabel.setValueAt(stok, baris, 3);//nilai stok berubah pada jtable1
-            mnmTabel.setValueAt(stok, baris, 3);
-            Update();//update notepad
-//            loadData();//refresh jtable1
-
-            data[0] = namaProduk;
-            data[1] = "" + harga;
-            data[2] = "" + jml;
-            data[3] = "" + (harga * jml);
-            //tabelPesan.setModel(troli);
-            troli.addRow(data);
-            //Total();
-        } else {
-            JOptionPane.showMessageDialog(null, "Stok Kosong");
-        }
-        minumanText1.setText("");
-        makananText1.setText("");
-        hargaText.setText("");
-        jumlahText.setText("");
-    }
+//    public void buttonClick() {
+//        int jml = Integer.parseInt(jumlahText.getText());
+//        String namaProduk = "";
+//        String[] data = new String[4];//array untuk dimasukan ke jTabel2
+//        boolean ready = false;//status kode barang tersedia di jtble1
+//        int stok = 0;
+//        int baris = 0;
+//        int harga = 0;
+//        try {
+//            
+//        } catch (Exception e) {
+//        }
+//        for (int i = 0; i < tabelMakanan.getRowCount(); i++) {
+//            if (makananText1.getText().equals(mknTabel.getValueAt(i, 0))) {
+//                namaProduk = mknTabel.getValueAt(i, 0).toString();
+//                harga = Integer.parseInt(mknTabel.getValueAt(i, 1).toString());
+//                stok = Integer.parseInt(mknTabel.getValueAt(i, 3).toString());
+//                baris = i;//kode di temukan pada baris ke-i
+//                ready = true;//bernilai true karena kode tersedia di jtble1
+//                break;
+//            }
+//        }
+//        
+//        for (int i = 0; i < tabelMinuman.getRowCount(); i++) {
+//            if (minumanText1.getText().equals(mnmTabel.getValueAt(i, 0))) {
+//                namaProduk = mnmTabel.getValueAt(i, 0).toString();
+//                harga = Integer.parseInt(mnmTabel.getValueAt(i, 1).toString());
+//                stok = Integer.parseInt(mnmTabel.getValueAt(i, 3).toString());
+//                baris = i;//kode di temukan pada baris ke-i
+//                ready = true;//bernilai true karena kode tersedia di jtble1
+//                break;
+//            }
+//        }
+//        
+//        if (ready && stok >= jml) {
+//            stok -= jml;//stok = stok-jumlah
+//            mknTabel.setValueAt(stok, baris, 3);//nilai stok berubah pada jtable1
+//            mnmTabel.setValueAt(stok, baris, 3);
+//            Update();//update notepad
+////            loadData();//refresh jtable1
+//
+//            data[0] = namaProduk;
+//            data[1] = "" + harga;
+//            data[2] = "" + jml;
+//            data[3] = "" + (harga * jml);
+//            //tabelPesan.setModel(troli);
+//            troli.addRow(data);
+//            //Total();
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Stok Kosong");
+//        }
+//        minumanText1.setText("");
+//        makananText1.setText("");
+//        hargaText.setText("");
+//        jumlahText.setText("");
+//    }
 public void hapus(){
     int baris = tabelPesan.getSelectedRow();
     troli.removeRow(baris);
@@ -375,7 +376,10 @@ public void hapus(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        buttonClick();
+        row = tabelMakanan.getSelectedRow();
+        buttonAdd add = new buttonAdd();
+        add.buttonAddmkn(tabelMakanan, tabelPesan, row);
+//buttonClick();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void hargaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaTextActionPerformed
