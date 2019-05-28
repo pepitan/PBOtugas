@@ -85,6 +85,10 @@ public class GUI extends javax.swing.JFrame {
         int stok = 0;
         int baris = 0;
         int harga = 0;
+        try {
+            
+        } catch (Exception e) {
+        }
         for (int i = 0; i < tabelMakanan.getRowCount(); i++) {
             if (makananText1.getText().equals(mknTabel.getValueAt(i, 0))) {
                 namaProduk = mknTabel.getValueAt(i, 0).toString();
@@ -129,6 +133,12 @@ public class GUI extends javax.swing.JFrame {
         hargaText.setText("");
         jumlahText.setText("");
     }
+public void hapus(){
+    int baris = tabelPesan.getSelectedRow();
+    troli.removeRow(baris);
+    Update();
+    JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
+}
 
 
     /**
@@ -225,6 +235,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel1.add(pemesanText);
         pemesanText.setBounds(150, 120, 210, 30);
 
+        hargaText.setEditable(false);
         hargaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hargaTextActionPerformed(evt);
@@ -232,8 +243,12 @@ public class GUI extends javax.swing.JFrame {
         });
         jPanel1.add(hargaText);
         hargaText.setBounds(150, 270, 210, 30);
+
+        makananText1.setEditable(false);
         jPanel1.add(makananText1);
         makananText1.setBounds(150, 170, 210, 30);
+
+        minumanText1.setEditable(false);
         jPanel1.add(minumanText1);
         minumanText1.setBounds(150, 220, 210, 30);
 
@@ -314,6 +329,12 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel1.add(tabMenu);
         tabMenu.setBounds(430, 30, 450, 230);
+
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnDelete);
         btnDelete.setBounds(150, 360, 80, 30);
 
@@ -377,6 +398,11 @@ public class GUI extends javax.swing.JFrame {
     private void ta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ta1ActionPerformed
          // TODO add your handling code here:
     }//GEN-LAST:event_ta1ActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        hapus();
+    }//GEN-LAST:event_btnDeleteActionPerformed
     /**
      * @param args the command line arguments
      */
