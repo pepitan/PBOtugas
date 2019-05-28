@@ -208,26 +208,31 @@ public void hapus(){
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Jumlah");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(40, 320, 90, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Pemesanan");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(40, 110, 90, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Minuman");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(40, 220, 90, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Makanan");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(40, 160, 90, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Harga");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(40, 270, 90, 30);
         jPanel1.add(jumlahText);
@@ -254,6 +259,11 @@ public void hapus(){
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton3.setText("Bayar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3);
         jButton3.setBounds(40, 490, 110, 50);
 
@@ -300,7 +310,7 @@ public void hapus(){
         });
         jScrollPane3.setViewportView(tabelMakanan);
 
-        tabMenu.addTab("", jScrollPane3);
+        tabMenu.addTab("Makanan", jScrollPane3);
 
         tabelMinuman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -325,11 +335,12 @@ public void hapus(){
         });
         jScrollPane4.setViewportView(tabelMinuman);
 
-        tabMenu.addTab("", jScrollPane4);
+        tabMenu.addTab("Minuman", jScrollPane4);
 
         jPanel1.add(tabMenu);
         tabMenu.setBounds(430, 30, 450, 230);
 
+        btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -338,6 +349,7 @@ public void hapus(){
         jPanel1.add(btnDelete);
         btnDelete.setBounds(150, 360, 80, 30);
 
+        btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -403,6 +415,18 @@ public void hapus(){
         // TODO add your handling code here:
         hapus();
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String pembeli, total;
+        pembeli = pemesanText.getText();
+        total = ta1.getText();
+
+        pembayaran pm = new pembayaran(pembeli, total);
+        pm.setVisible(true);
+        pm.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
     /**
      * @param args the command line arguments
      */

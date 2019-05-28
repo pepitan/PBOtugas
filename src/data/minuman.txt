@@ -1,5 +1,5 @@
-Susu/6000/Ada/26
-Kopi/6000/Ada/26
+Susu/6000/Ada/10
+Kopi/6000/Ada/25
 Teh/3000/Ada/30
 Juice/10000/Ada/37
 Smoothies/12000/Ada/30

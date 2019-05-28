@@ -1,4 +1,4 @@
-Mie/80000/Ada/26
-Bakso/6000/Ada/26
+Mie/80000/Ada/10
+Bakso/6000/Ada/25
 Nasi Goreng/10000/Ada/30
 Ayam Goreng/12000/Ada/37
