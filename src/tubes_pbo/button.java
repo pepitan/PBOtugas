@@ -77,14 +77,14 @@ public class button {
     
     public void buttonAddmkn(JTable tabelMakanan, JTable tabelPesan, int a) {
         mknTabel = (DefaultTableModel) tabelMakanan.getModel();
-        String kb = mknTabel.getValueAt(a, 0).toString();
-        String nb = mknTabel.getValueAt(a, 1).toString();
-        String hb = jumlahText.getText();
+        String nama = mknTabel.getValueAt(a, 0).toString();
+        String harga = mknTabel.getValueAt(a, 1).toString();
+        String jumlah = jumlahText.getText();
         //kurangi stok
         String strstok = mknTabel.getValueAt(a, 3).toString();
-        int hrg = Integer.parseInt(nb);
+        int hrg = Integer.parseInt(harga);
         int stok = Integer.parseInt(strstok) - 1;
-        int subtxt = Integer.parseInt(hb);
+        int subtxt = Integer.parseInt(jumlah);
         int sub = subtxt * hrg;
         if (stok < 0) {
             JOptionPane.showMessageDialog(null, "Stok Habis");
@@ -92,9 +92,9 @@ public class button {
             mknTabel.setValueAt(Integer.toString(stok), a, 3);
             List data = new ArrayList<>();
             Update();
-            data.add(kb);
-            data.add(nb);
-            data.add(hb);
+            data.add(nama);
+            data.add(harga);
+            data.add(jumlah);
             data.add(sub);
 
             //masuk keranjang
@@ -109,14 +109,14 @@ public class button {
 
     public void buttonAddmnm(JTable tabelMinuman, JTable tabelPesan, int a) {
         mnmTabel = (DefaultTableModel) tabelMinuman.getModel();
-        String kb = mnmTabel.getValueAt(a, 0).toString();
-        String nb = mnmTabel.getValueAt(a, 1).toString();
-        String hb = jumlahText.getText();
+        String nama = mnmTabel.getValueAt(a, 0).toString();
+        String harga = mnmTabel.getValueAt(a, 1).toString();
+        String jumlah = jumlahText.getText();
         //kurangi stok
         String strstok = mnmTabel.getValueAt(a, 3).toString();
-        int hrg = Integer.parseInt(nb);
+        int hrg = Integer.parseInt(harga);
         int stok = Integer.parseInt(strstok) - 1;
-        int subtxt = Integer.parseInt(hb);
+        int subtxt = Integer.parseInt(jumlah);
         int sub = subtxt * hrg;
         if (stok < 0) {
             JOptionPane.showMessageDialog(null, "Stok Habis");
@@ -124,9 +124,9 @@ public class button {
             mnmTabel.setValueAt(Integer.toString(stok), a, 3);
             List data1 = new ArrayList<>();
             Update();
-            data1.add(kb);
-            data1.add(nb);
-            data1.add(hb);
+            data1.add(nama);
+            data1.add(harga);
+            data1.add(jumlah);
             data1.add(sub);
 
             //masuk keranjang

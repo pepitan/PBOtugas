@@ -39,6 +39,8 @@ public class GUI extends javax.swing.JFrame {
         pemesan = pemesanText.getText();
         makanan = hargaText.getText();
         jml = jumlahText.getText();
+        buttonaddMnm.setEnabled(false);
+        btnDelete.setEnabled(false);
 //        jml=jumlah.getText();
         loadData load = new loadData();
         load.mknloadData(tabelMakanan);
@@ -152,18 +154,36 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Makanan", "Harga", "Jumlah", "Subtotal"
+                "Pesanan", "Harga", "Jumlah", "Subtotal"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelPesan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelPesanMouseClicked(evt);
+            }
         });
         jScrollPane2.setViewportView(tabelPesan);
+        if (tabelPesan.getColumnModel().getColumnCount() > 0) {
+            tabelPesan.getColumnModel().getColumn(0).setResizable(false);
+            tabelPesan.getColumnModel().getColumn(1).setResizable(false);
+            tabelPesan.getColumnModel().getColumn(2).setResizable(false);
+            tabelPesan.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(430, 280, 452, 210);
@@ -267,6 +287,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tabelMakanan);
+        if (tabelMakanan.getColumnModel().getColumnCount() > 0) {
+            tabelMakanan.getColumnModel().getColumn(0).setResizable(false);
+            tabelMakanan.getColumnModel().getColumn(1).setResizable(false);
+            tabelMakanan.getColumnModel().getColumn(2).setResizable(false);
+            tabelMakanan.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         tabMenu.addTab("Makanan", jScrollPane3);
 
@@ -299,6 +325,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(tabelMinuman);
+        if (tabelMinuman.getColumnModel().getColumnCount() > 0) {
+            tabelMinuman.getColumnModel().getColumn(0).setResizable(false);
+            tabelMinuman.getColumnModel().getColumn(1).setResizable(false);
+            tabelMinuman.getColumnModel().getColumn(2).setResizable(false);
+            tabelMinuman.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         tabMenu.addTab("Minuman", jScrollPane4);
 
@@ -432,6 +464,12 @@ public class GUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_buttonaddMnmActionPerformed
+
+    private void tabelPesanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPesanMouseClicked
+        if (tabelPesan.isShowing()){
+            btnDelete.setEnabled(true);
+        }
+    }//GEN-LAST:event_tabelPesanMouseClicked
     /**
      * @param args the command line arguments
      */
