@@ -8,6 +8,8 @@ package tubes_pbo;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -23,58 +25,73 @@ import static tubes_pbo.GUI.tabelMinuman;
  * @author Pepita Neysa
  */
 public class buttonAdd {
+
     DefaultTableModel mknTabel;
     DefaultTableModel mnmTabel;
     DefaultTableModel troli;
-    String alamatStokmkn,alamatStokmnm;
+    String alamatStokmkn, alamatStokmnm;
     File fileStok1, fileStok2;
     BufferedWriter tulisStokmkn, tulisStokmnm;
 
-    public void buttonAddmkn(JTable tabelMakanan, JTable tabelPesan, int a){
+    public void buttonAddmkn(JTable tabelMakanan, JTable tabelPesan, int a) {
         mknTabel = (DefaultTableModel) tabelMakanan.getModel();
-        troli = (DefaultTableModel) tabelPesan.getModel();
-        int jml = Integer.parseInt(jumlahText.getText());
-        String namaProduk = "";
-        String[] data = new String[4];//array untuk dimasukan ke jTabel2
-        boolean ready = false;//status kode barang tersedia di jtble1
-        int stok = 0;
-        int baris = 0;
-        int harga = 0;
-        try {
-            
-        } catch (Exception e) {
-        }
-        for (int i = 0; i < tabelMakanan.getRowCount(); i++) {
-            if (makananText1.getText().equals(mknTabel.getValueAt(i, 0))) {
-                namaProduk = mknTabel.getValueAt(i, 0).toString();
-                harga = Integer.parseInt(mknTabel.getValueAt(i, 1).toString());
-                stok = Integer.parseInt(mknTabel.getValueAt(i, 3).toString());
-                baris = i;//kode di temukan pada baris ke-i
-                ready = true;//bernilai true karena kode tersedia di jtble1
-                break;
-            }
-        }
-        
-        if (ready && stok >= jml) {
-            stok -= jml;//stok = stok-jumlah
-            mknTabel.setValueAt(stok, baris, 3);//nilai stok berubah pada jtable1
-            mnmTabel.setValueAt(stok, baris, 3);
-            //Update();//update notepad
-//            loadData();//refresh jtable1
-
-            data[0] = namaProduk;
-            data[1] = "" + harga;
-            data[2] = "" + jml;
-            data[3] = "" + (harga * jml);
-            //tabelPesan.setModel(troli);
-            troli.addRow(data);
-           //Total();
+        String kb = mknTabel.getValueAt(a, 0).toString();
+        String nb = mknTabel.getValueAt(a, 1).toString();
+        String hb = jumlahText.getText();
+        //kurangi stok
+        String strstok = mknTabel.getValueAt(a, 3).toString();
+        int hrg = Integer.parseInt(nb);
+        int stok = Integer.parseInt(strstok) - 1;
+        int subtxt = Integer.parseInt(hb);
+        int sub = subtxt * hrg;
+        if (stok < 0) {
+            JOptionPane.showMessageDialog(null, "Stok Habis");
         } else {
-           JOptionPane.showMessageDialog(null, "Stok Kosong");
-        }
-        minumanText1.setText("");
-        makananText1.setText("");
-        hargaText.setText("");
-        jumlahText.setText("");
+            mknTabel.setValueAt(Integer.toString(stok), a, 3);
+            List data = new ArrayList<>();
+            data.add(kb);
+            data.add(nb);
+            data.add(hb);
+            data.add(sub);
+
+            //masuk keranjang
+            DefaultTableModel mdl = (DefaultTableModel) tabelPesan.getModel();
+            mdl.addRow(data.toArray());
+
+            makananText1.setText("");
+            hargaText.setText("");
+            jumlahText.setText("");
         }
     }
+
+    public void buttonAddmnm(JTable tabelMinuman, JTable tabelPesan, int a) {
+        mnmTabel = (DefaultTableModel) tabelMinuman.getModel();
+        String kb = mnmTabel.getValueAt(a, 0).toString();
+        String nb = mnmTabel.getValueAt(a, 1).toString();
+        String hb = jumlahText.getText();
+        //kurangi stok
+        String strstok = mnmTabel.getValueAt(a, 3).toString();
+        int hrg = Integer.parseInt(nb);
+        int stok = Integer.parseInt(strstok) - 1;
+        int subtxt = Integer.parseInt(hb);
+        int sub = subtxt * hrg;
+        if (stok < 0) {
+            JOptionPane.showMessageDialog(null, "Stok Habis");
+        } else {
+            mnmTabel.setValueAt(Integer.toString(stok), a, 3);
+            List data1 = new ArrayList<>();
+            data1.add(kb);
+            data1.add(nb);
+            data1.add(hb);
+            data1.add(sub);
+
+            //masuk keranjang
+            DefaultTableModel md2 = (DefaultTableModel) tabelPesan.getModel();
+            md2.addRow(data1.toArray());
+
+            minumanText1.setText("");
+            hargaText.setText("");
+            jumlahText.setText("");
+        }
+    }
+}

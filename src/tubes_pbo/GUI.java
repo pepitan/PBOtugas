@@ -29,7 +29,7 @@ public class GUI extends javax.swing.JFrame {
     DefaultTableModel mnmTabel;
     DefaultTableModel troli;
     String[] data, keranjang;
-    int row;
+    int row1, row2;
 
     public GUI() {
         initComponents();
@@ -174,8 +174,9 @@ public void hapus(){
         jScrollPane4 = new javax.swing.JScrollPane();
         tabelMinuman = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
+        buttonaddMkn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        buttonaddMnm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(917, 630));
@@ -299,9 +300,16 @@ public void hapus(){
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tabelMakanan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,9 +332,16 @@ public void hapus(){
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tabelMinuman.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -348,16 +363,16 @@ public void hapus(){
             }
         });
         jPanel1.add(btnDelete);
-        btnDelete.setBounds(150, 360, 80, 30);
+        btnDelete.setBounds(50, 360, 80, 30);
 
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        buttonaddMkn.setText("Add Makanan");
+        buttonaddMkn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                buttonaddMknActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd);
-        btnAdd.setBounds(270, 360, 90, 30);
+        jPanel1.add(buttonaddMkn);
+        buttonaddMkn.setBounds(140, 360, 120, 30);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Total");
@@ -369,18 +384,26 @@ public void hapus(){
         jPanel1.add(jButton1);
         jButton1.setBounds(610, 510, 120, 40);
 
+        buttonaddMnm.setText("Add Minuman");
+        buttonaddMnm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonaddMnmActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonaddMnm);
+        buttonaddMnm.setBounds(270, 360, 120, 30);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 900, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        row = tabelMakanan.getSelectedRow();
+    private void buttonaddMknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonaddMknActionPerformed
+        row1 = tabelMakanan.getSelectedRow();
         buttonAdd add = new buttonAdd();
-        add.buttonAddmkn(tabelMakanan, tabelPesan, row);
-//buttonClick();
-    }//GEN-LAST:event_btnAddActionPerformed
+        add.buttonAddmkn(tabelMakanan, tabelPesan, row1);
+    }//GEN-LAST:event_buttonaddMknActionPerformed
 
     private void hargaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaTextActionPerformed
         // TODO add your handling code here:
@@ -400,6 +423,14 @@ public void hapus(){
         makananText1.setText("");
         hargaText.setText("");
         minumanText1.setText("");
+        if (tabelMakanan.isShowing()){
+            buttonaddMkn.setEnabled(true);
+            buttonaddMnm.setEnabled(false);
+        }
+        else if (tabelMinuman.isShowing()){
+            buttonaddMkn.setEnabled(false);
+            buttonaddMnm.setEnabled(true);
+        }
     }//GEN-LAST:event_tabMenuMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -431,6 +462,12 @@ public void hapus(){
         pm.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void buttonaddMnmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonaddMnmActionPerformed
+        row2 = tabelMinuman.getSelectedRow();
+        buttonAdd add = new buttonAdd();
+        add.buttonAddmnm(tabelMinuman, tabelPesan, row2);
+    }//GEN-LAST:event_buttonaddMnmActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -468,8 +505,9 @@ public void hapus(){
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnAdd;
     public static javax.swing.JButton btnDelete;
+    public static javax.swing.JButton buttonaddMkn;
+    private javax.swing.JButton buttonaddMnm;
     public static javax.swing.JTextField hargaText;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
