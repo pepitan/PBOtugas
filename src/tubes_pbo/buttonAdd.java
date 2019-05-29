@@ -33,6 +33,40 @@ public class buttonAdd {
     File fileStok1, fileStok2;
     BufferedWriter tulisStokmkn, tulisStokmnm;
 
+    
+    public void Update() {
+        alamatStokmkn = "src/data/makanan.txt";
+        alamatStokmnm = "src/data/minuman.txt";
+        fileStok1 = new File(alamatStokmkn);
+        fileStok2 = new File(alamatStokmnm);
+        try {
+            tulisStokmkn = new BufferedWriter(new FileWriter(fileStok1));
+            for (int i = 0; i < tabelMakanan.getRowCount(); i++) {
+                for (int j = 0; j < tabelMakanan.getColumnCount(); j++) {
+                    if (j > 0) {
+                        tulisStokmkn.write("/");
+                    }
+                    tulisStokmkn.write(tabelMakanan.getValueAt(i, j).toString());
+                }
+                tulisStokmkn.newLine();
+            }
+            tulisStokmkn.close();
+            
+            tulisStokmnm = new BufferedWriter(new FileWriter(fileStok2));
+            for (int i = 0; i < tabelMinuman.getRowCount(); i++) {
+                for (int j = 0; j < tabelMinuman.getColumnCount(); j++) {
+                    if (j > 0) {
+                        tulisStokmnm.write("/");
+                    }
+                    tulisStokmnm.write(tabelMinuman.getValueAt(i, j).toString());
+                }
+                tulisStokmnm.newLine();
+            }
+            tulisStokmnm.close();
+        } catch (Exception e) {
+        }
+    }
+    
     public void buttonAddmkn(JTable tabelMakanan, JTable tabelPesan, int a) {
         mknTabel = (DefaultTableModel) tabelMakanan.getModel();
         String kb = mknTabel.getValueAt(a, 0).toString();
@@ -49,6 +83,7 @@ public class buttonAdd {
         } else {
             mknTabel.setValueAt(Integer.toString(stok), a, 3);
             List data = new ArrayList<>();
+            Update();
             data.add(kb);
             data.add(nb);
             data.add(hb);
@@ -80,6 +115,7 @@ public class buttonAdd {
         } else {
             mnmTabel.setValueAt(Integer.toString(stok), a, 3);
             List data1 = new ArrayList<>();
+            Update();
             data1.add(kb);
             data1.add(nb);
             data1.add(hb);
