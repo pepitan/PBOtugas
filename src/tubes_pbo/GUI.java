@@ -360,6 +360,7 @@ public class GUI extends javax.swing.JFrame {
                 add.buttonAddmkn(tabelMakanan, tabelPesan, row1);
             }
         } catch (Exception e) {
+            //ketika user salah mengisi data akan muncul dialog dibawah ini
             JOptionPane.showMessageDialog(null, "Anda hanya dapat mengisi angka pada jumlah");
         }
 
