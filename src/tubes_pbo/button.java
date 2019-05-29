@@ -24,7 +24,7 @@ import static tubes_pbo.GUI.tabelMinuman;
  *
  * @author Pepita Neysa
  */
-public class buttonAdd {
+public class button {
 
     DefaultTableModel mknTabel;
     DefaultTableModel mnmTabel;
@@ -65,6 +65,14 @@ public class buttonAdd {
             tulisStokmnm.close();
         } catch (Exception e) {
         }
+    }
+    
+    public void hapus(JTable tabelPesan) {
+        troli = (DefaultTableModel) tabelPesan.getModel();
+        int baris = tabelPesan.getSelectedRow();
+        troli.removeRow(baris);
+        Update();
+        JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
     }
     
     public void buttonAddmkn(JTable tabelMakanan, JTable tabelPesan, int a) {

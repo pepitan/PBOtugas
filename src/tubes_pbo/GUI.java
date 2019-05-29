@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI extends javax.swing.JFrame {
 
-    String alamatStokmkn,alamatStokmnm;
+    String alamatStokmkn, alamatStokmnm;
     String pemesan, hrg, jml, makanan;
     File fileStok1, fileStok2;
     BufferedReader baca, bacamnm;
@@ -43,39 +43,6 @@ public class GUI extends javax.swing.JFrame {
         loadData load = new loadData();
         load.mknloadData(tabelMakanan);
         load.mnmloadData(tabelMinuman);
-    }
-
-    public void Update() {
-        alamatStokmkn = "src/data/makanan.txt";
-        alamatStokmnm = "src/data/minuman.txt";
-        fileStok1 = new File(alamatStokmkn);
-        fileStok2 = new File(alamatStokmnm);
-        try {
-            tulisStokmkn = new BufferedWriter(new FileWriter(fileStok1));
-            for (int i = 0; i < tabelMakanan.getRowCount(); i++) {
-                for (int j = 0; j < tabelMakanan.getColumnCount(); j++) {
-                    if (j > 0) {
-                        tulisStokmkn.write("/");
-                    }
-                    tulisStokmkn.write(tabelMakanan.getValueAt(i, j).toString());
-                }
-                tulisStokmkn.newLine();
-            }
-            tulisStokmkn.close();
-            
-            tulisStokmnm = new BufferedWriter(new FileWriter(fileStok2));
-            for (int i = 0; i < tabelMinuman.getRowCount(); i++) {
-                for (int j = 0; j < tabelMinuman.getColumnCount(); j++) {
-                    if (j > 0) {
-                        tulisStokmnm.write("/");
-                    }
-                    tulisStokmnm.write(tabelMinuman.getValueAt(i, j).toString());
-                }
-                tulisStokmnm.newLine();
-            }
-            tulisStokmnm.close();
-        } catch (Exception e) {
-        }
     }
 
 //    public void buttonClick() {
@@ -134,13 +101,6 @@ public class GUI extends javax.swing.JFrame {
 //        hargaText.setText("");
 //        jumlahText.setText("");
 //    }
-public void hapus(){
-    int baris = tabelPesan.getSelectedRow();
-    troli.removeRow(baris);
-    Update();
-    JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-}
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -243,11 +203,6 @@ public void hapus(){
         pemesanText.setBounds(150, 120, 210, 30);
 
         hargaText.setEditable(false);
-        hargaText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hargaTextActionPerformed(evt);
-            }
-        });
         jPanel1.add(hargaText);
         hargaText.setBounds(150, 270, 210, 30);
 
@@ -274,12 +229,6 @@ public void hapus(){
         jLabel1.setText("Total yang harus anda bayarkan");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(40, 390, 230, 30);
-
-        ta1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ta1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(ta1);
         ta1.setBounds(40, 430, 220, 30);
 
@@ -400,14 +349,21 @@ public void hapus(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonaddMknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonaddMknActionPerformed
-        row1 = tabelMakanan.getSelectedRow();
-        buttonAdd add = new buttonAdd();
-        add.buttonAddmkn(tabelMakanan, tabelPesan, row1);
-    }//GEN-LAST:event_buttonaddMknActionPerformed
+        try {
+            if (pemesanText.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Masukkan nama pemesan");
+            } else if (jumlahText.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Anda harus mengisi jumlah pesanan anda");
+            } else {
+                row1 = tabelMakanan.getSelectedRow();
+                button add = new button();
+                add.buttonAddmkn(tabelMakanan, tabelPesan, row1);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Anda hanya dapat mengisi angka pada jumlah");
+        }
 
-    private void hargaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hargaTextActionPerformed
+    }//GEN-LAST:event_buttonaddMknActionPerformed
 
     private void tabelMinumanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMinumanMouseReleased
         clickTabel click = new clickTabel();
@@ -423,32 +379,28 @@ public void hapus(){
         makananText1.setText("");
         hargaText.setText("");
         minumanText1.setText("");
-        if (tabelMakanan.isShowing()){
+        if (tabelMakanan.isShowing()) {
             buttonaddMkn.setEnabled(true);
             buttonaddMnm.setEnabled(false);
-        }
-        else if (tabelMinuman.isShowing()){
+        } else if (tabelMinuman.isShowing()) {
             buttonaddMkn.setEnabled(false);
             buttonaddMnm.setEnabled(true);
         }
     }//GEN-LAST:event_tabMenuMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         // TODO add your handling code here:
-         int x = 0;
-         for (int y = 0; y < tabelPesan.getRowCount(); y++) {
-            x+=Integer.parseInt(tabelPesan.getValueAt(y, 3).toString());
+        // TODO add your handling code here:
+        int x = 0;
+        for (int y = 0; y < tabelPesan.getRowCount(); y++) {
+            x += Integer.parseInt(tabelPesan.getValueAt(y, 3).toString());
         }
-         ta1.setText(x+"");
+        ta1.setText(x + "");
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void ta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ta1ActionPerformed
-         // TODO add your handling code here:
-    }//GEN-LAST:event_ta1ActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        hapus();
+        button del = new button();
+        del.hapus(tabelPesan);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -464,9 +416,20 @@ public void hapus(){
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void buttonaddMnmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonaddMnmActionPerformed
-        row2 = tabelMinuman.getSelectedRow();
-        buttonAdd add = new buttonAdd();
-        add.buttonAddmnm(tabelMinuman, tabelPesan, row2);
+        try {
+            if (pemesanText.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Masukkan nama pemesan");
+            } else if (jumlahText.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Anda harus mengisi jumlah pesanan anda");
+            } else {
+                row2 = tabelMinuman.getSelectedRow();
+                button add = new button();
+                add.buttonAddmnm(tabelMinuman, tabelPesan, row2);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Anda hanya dapat mengisi angka pada jumlah");
+        }
+
     }//GEN-LAST:event_buttonaddMnmActionPerformed
     /**
      * @param args the command line arguments
