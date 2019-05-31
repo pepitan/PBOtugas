@@ -41,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
         jml = jumlahText.getText();
         buttonaddMnm.setEnabled(false);
         btnDelete.setEnabled(false);
+        jButton1.setEnabled(false);
 //        jml=jumlah.getText();
         loadData load = new loadData();
         load.mknloadData(tabelMakanan);
@@ -139,6 +140,7 @@ public class GUI extends javax.swing.JFrame {
         buttonaddMkn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         buttonaddMnm = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(917, 630));
@@ -344,7 +346,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnDelete);
-        btnDelete.setBounds(50, 360, 80, 30);
+        btnDelete.setBounds(300, 360, 80, 30);
 
         buttonaddMkn.setText("Add Makanan");
         buttonaddMkn.addActionListener(new java.awt.event.ActionListener() {
@@ -353,7 +355,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonaddMkn);
-        buttonaddMkn.setBounds(140, 360, 120, 30);
+        buttonaddMkn.setBounds(40, 360, 120, 30);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Total");
@@ -372,7 +374,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonaddMnm);
-        buttonaddMnm.setBounds(270, 360, 120, 30);
+        buttonaddMnm.setBounds(170, 360, 120, 30);
+
+        jCheckBox1.setText("Selesai");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1);
+        jCheckBox1.setBounds(440, 500, 90, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 900, 600);
@@ -470,6 +481,12 @@ public class GUI extends javax.swing.JFrame {
             btnDelete.setEnabled(true);
         }
     }//GEN-LAST:event_tabelPesanMouseClicked
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (jCheckBox1.isSelected()){
+            jButton1.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -513,6 +530,7 @@ public class GUI extends javax.swing.JFrame {
     public static javax.swing.JTextField hargaText;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;

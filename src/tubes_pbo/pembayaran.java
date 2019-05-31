@@ -5,6 +5,9 @@
  */
 package tubes_pbo;
 
+import jaco.mp3.player.MP3Player;
+import java.io.File;
+
 /**
  *
  * @author Pepita Neysa
@@ -14,18 +17,23 @@ public class pembayaran extends javax.swing.JFrame {
     /**
      * Creates new form pembayaran
      */
-     String beli, bayar;
+    String beli, bayar;
+     MP3Player player;
     public pembayaran(String pembeli, String total) {
         initComponents();
-        this.beli=pembeli;
-        this.bayar=total;
+        File file1 = new File("src/musik/Clean Bandit-Solo.mp3");
+        File file2 = new File("src/musik/01 Avicii Wake Me Up.mp3");
+        File file3 = new File("src/musik/I Don't Care - Ed.mp3");
+
+        player = new MP3Player(file3, file1, file2);
+        player.play();
+        player.setRepeat(true);
+        this.beli = pembeli;
+        this.bayar = total;
         pembayaran1.setText(beli);
         total1.setText(bayar);
         pembayaran1.setEnabled(false);
         total1.setEnabled(false);
-    }
-    public pembayaran() {
-        initComponents();
     }
 
     /**
@@ -91,10 +99,11 @@ public class pembayaran extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        GUI gu =new GUI();
+        GUI gu = new GUI();
         gu.setVisible(true);
         gu.setLocationRelativeTo(null);
         this.dispose();
+        player.stop();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
