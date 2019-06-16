@@ -115,7 +115,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new tubes_pbo.bg2();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelPesan = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -146,7 +146,6 @@ public class GUI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(917, 630));
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(57, 57, 203));
         jPanel1.setMinimumSize(new java.awt.Dimension(900, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
         jPanel1.setLayout(null);
@@ -191,31 +190,26 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane2.setBounds(430, 280, 452, 210);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Jumlah");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(40, 320, 90, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Pemesanan");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(40, 110, 90, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Minuman");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(40, 220, 90, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Makanan");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(40, 160, 90, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Harga");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(40, 270, 90, 30);
@@ -247,7 +241,6 @@ public class GUI extends javax.swing.JFrame {
         jButton3.setBounds(40, 490, 110, 50);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Total yang harus anda bayarkan");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(40, 390, 230, 30);
@@ -439,6 +432,11 @@ public class GUI extends javax.swing.JFrame {
             x += Integer.parseInt(tabelPesan.getValueAt(y, 3).toString());
         }
         ta1.setText(x + "");
+        pemesanText.setEnabled(false);
+        jumlahText.setEnabled(false);
+        btnDelete.setEnabled(false);
+        buttonaddMkn.setEnabled(false);
+        buttonaddMnm.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -483,7 +481,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelPesanMouseClicked
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if (jCheckBox1.isSelected()){
+    if (jCheckBox1.isSelected()){
             jButton1.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed

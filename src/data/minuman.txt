@@ -1,4 +1,4 @@
-Susu/6000/Ada/8
+Susu/6000/Ada/7
 Kopi/6000/Ada/23
 Teh/3000/Ada/29
 Juice/10000/Ada/36

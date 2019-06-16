@@ -45,7 +45,7 @@ public class pembayaran extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new tubes_pbo.background();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pembayaran1 = new javax.swing.JTextField();
@@ -60,22 +60,28 @@ public class pembayaran extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Pembayaran");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(140, 10, 146, 48);
+        jLabel1.setBounds(130, 20, 146, 48);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Pemasanan");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(30, 70, 122, 37);
+        jLabel2.setBounds(50, 70, 122, 37);
         jPanel1.add(pembayaran1);
         pembayaran1.setBounds(190, 80, 170, 30);
         jPanel1.add(total1);
         total1.setBounds(190, 130, 169, 27);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Total Pembayaran");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 130, 122, 27);
+        jLabel3.setBounds(50, 130, 140, 27);
 
         jButton1.setText("Selesai");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +92,7 @@ public class pembayaran extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(160, 260, 107, 42);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Jika pesanan sudah lengkap tekan tombol dibawah");
         jPanel1.add(jLabel4);
